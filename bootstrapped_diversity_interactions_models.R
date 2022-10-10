@@ -8,7 +8,7 @@ library(tidyverse)
 library(geepack)
 
 ###SET WORKING DIRECTORY###
-setwd()
+setwd("")
 
 ###READ IN DATA (if applicable)###
 survey_data <- read.csv("survey_data.csv", header = T, stringsAsFactors = F)
@@ -284,3 +284,17 @@ length(subset(test.all$test1p, test.all$test1p<=0.05))/10 #percentage p-values u
 
 #test 2 (model2 vs model3): Are statistical interactions between functional groups associated with coral benthic state?
 length(subset(test.all$test2p, test.all$test2p<=0.05))/10 #percentage p-values under 0.05
+                        
+#model validation
+EP <- residuals(model3, "pearson")
+fitted <- fitted(model3)
+plot(EP, fitted)
+plot(EP, x1)
+plot(EP, x2)
+plot(EP, x3)
+plot(EP, x4)
+plot(EP, x5)
+plot(EP, x6)
+plot(EP, x7)
+plot(EP, x8)
+plot(EP, x9)
